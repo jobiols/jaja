@@ -44,7 +44,6 @@ Este módulo fue escrito para desarrollar la customización básica de Cotillon 
 
     # any module necessary for this one to work correctly
     'depends': [
-            'mail',
     ],
     'external_dependencies': {
         'python': [],
@@ -52,22 +51,10 @@ Este módulo fue escrito para desarrollar la customización básica de Cotillon 
 
     # always loaded
     'data': [
-            'views/crm_case_stage_view.xml',
-            'views/calendar_event_view.xml',
-            'views/account_voucher_view.xml',
-            'data/crm_claim_report.xml',
-            'data/crm_lead_report.xml',
-            'data/account_voucher.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
     ],
-
-    # used for Javascript Web CLient Testing with QUnit / PhantomJS
-    # https://www.odoo.com/documentation/8.0/reference/javascript.html#testing-in-odoo-web-client  # noqa
-    'js': [],
-    'css': [],
-    'qweb': [],
 
     'installable': True,
     # Install this module automatically if all dependency have been previously

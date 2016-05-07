@@ -18,5 +18,3 @@
 #
 ##############################################################################
 
-from . import workflow_activity
-from . import account_journal

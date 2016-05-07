@@ -28,9 +28,13 @@ class Testjaja(TransactionCase):
 
     def setUp(self):
         super(Testjaja, self).setUp()
+        self.client1 = self.env['res.partner'].create({'name':'Juan Perez'})
         print 'setup testing --------------------------'
 
     def test_one(self):
         print 'testing one ----------------------------'
+        self.assertTrue(self.client1.name,'Debe tener nombre')
+        self.assertEqual(self.client1.name,'Juan Perez')
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

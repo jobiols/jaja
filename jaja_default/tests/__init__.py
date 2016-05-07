@@ -18,6 +18,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #-----------------------------------------------------------------------------------
-from jaja_default.tests import test_default
+from . import test_default
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

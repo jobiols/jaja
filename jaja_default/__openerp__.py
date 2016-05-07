@@ -26,14 +26,16 @@
     'website': 'www.jeo-soft.com.ar',
     'license': 'AGPL-3',
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml # noqa
-    # for the full list
     'category': 'Extra Tools',    'summary': 'Customización Cotillon JAJA',
     'description': """
+
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
+
+.. image:: https://codeclimate.com/github/jobiols/jaja/badges/gpa.svg
+   :target: https://codeclimate.com/github/jobiols/jaja
+   :alt: Code Climate
 
 ===========================
 Customización Cotillon JAJA

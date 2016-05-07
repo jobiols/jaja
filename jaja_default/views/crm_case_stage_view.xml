@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- TODO: put here a reminder on what to do at the first edition -->
+        <record id="crm_case_stage_form_view" model="ir.ui.view">
+            <field name="name">crm.case.stage.form.view</field>
+            <field name="model">crm.case.stage</field>
+            <field name="view_type">form</field>
+            <field name="inherit_id" ref=""/>
+            <field name="arch" type="xml">
+              <form string="Stage">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="type"/>
+                            <field name="probability"/>
+                        </group>
+                        <group>
+                            <field name="fold"/>
+                            <field name="on_change"/>
+                            <field name="case_default" groups="base.group_multi_salesteams"/>
+                        </group>
+
+                    </group>
+                    <separator string="Requirements"/>
+                    <field name="requirements" nolabel="1"/>
+                    <field name="section_ids" invisible="1"/>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

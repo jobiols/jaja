@@ -18,4 +18,16 @@
 #
 ##############################################################################
 
-from . import models
+from openerp import models, fields
+from openerp.tools.translate import _
+
+
+class workflow_activity(models.Model):
+    _name = "workflow.activity"
+
+    action = fields.Text(
+        string=_("Python Action"),
+        required=False,
+        translate=False,
+        readonly=False
+    )

@@ -18,4 +18,16 @@
 #
 ##############################################################################
 
-from . import models
+from openerp import models, fields
+from openerp.tools.translate import _
+
+
+class account_journal(models.Model):
+    _name = "account.journal"
+
+    account_control_ids = fields.Many2many(
+        string=_("Account"),
+        required=False,
+        translate=False,
+        readonly=False
+    )

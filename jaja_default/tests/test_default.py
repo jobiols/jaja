@@ -1,8 +1,9 @@
-# -*- encoding: utf-8 -*-
-##############################################################################
+# -*- coding: utf-8 -*-
+#-----------------------------------------------------------------------------------
 #
-#    Odoo, Open Source Management Solution
-#    This module copyright (C) 2016 jeo Software#    (www.jeo-soft.com.ar).#
+#    Copyright (C) 2016  jeo Software  (http://www.jeo-soft.com.ar)
+#    All Rights Reserved.
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
 #    published by the Free Software Foundation, either version 3 of the
@@ -16,6 +17,20 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-##############################################################################
+#-----------------------------------------------------------------------------------
 
-from . import models
+from openerp.tests.common import TransactionCase
+
+
+class Testjaja(TransactionCase):
+    """Tests
+    """
+
+    def setUp(self):
+        super(Testjaja, self).setUp()
+        print 'setup testing --------------------------'
+
+    def test_one(self):
+        print 'testing one ----------------------------'
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

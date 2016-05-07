@@ -58,7 +58,7 @@ coverage.xml
 *.log
 
 # Sphinx documentation
-docs/_build/
+jaja_default/docs/_build/
 
 # PyBuilder
 target/

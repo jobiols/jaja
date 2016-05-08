@@ -1,1 +1,1 @@
-stock-logistics-warehouse https://github.com/jobiols/stock-logistics-warehouse.git
+stock-logistics-warehouse https://github.com/oca/stock-logistics-warehouse.git

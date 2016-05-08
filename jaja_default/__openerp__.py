@@ -46,6 +46,8 @@ Este módulo fue escrito para desarrollar la customización básica de Cotillon 
 
     # any module necessary for this one to work correctly
     'depends': [
+        'base',
+        'stock_available'
     ],
     'external_dependencies': {
         'python': [],

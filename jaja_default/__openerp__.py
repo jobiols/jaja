@@ -20,7 +20,7 @@
 
 {
     'name': 'jaja_default',
-    'version': '8.0.1.0.0',
+    'version': '8.0.0.1.0',
     'author': 'jeo Software',
     'maintainer': 'jorge.obiols@gmail.com',
     'website': 'www.jeo-soft.com.ar',
@@ -43,11 +43,33 @@ Customización Cotillon JAJA
 
 Este módulo fue escrito para desarrollar la customización básica de Cotillon JAJA
 """,
-
-    # any module necessary for this one to work correctly
     'depends': [
+        # base modules for standard instance
+        # ----------------------------------
         'base',
-        'stock_available'
+        'l10n_ar_base',  # modulo base para localización argentina
+        'base_vat_unique',  # evita que duplique cuit
+        #        'base_vat_unique_parent',  # evita que duplique cuit en multicompañia
+        'disable_openerp_online',  # elimina referencias a odoo online
+        'account_cancel',  # Muestra el check en los diarios que permite cancelar asientos
+        'hide_product_variants',  # oculta las variantes
+        'invoice_order_by_id',  # ordena facturas ultima arriba
+        #        'account_invoice_tax_wizard',  # agrega menu add_taxes para cargar percepciones
+        #        'sale_order_recalculate_prices',  # agrega boton para recalcular precios
+        #        'account_journal_sequence'         # agrega un campo de secuencia en el diario para elegirlos
+        #        'account_statement_move_import'    # agrega boton de importar aputnes en extractos bancarios
+        #        'l10n_ar_aeroo_sale',  # dependencia requerida
+        #        'l10n_ar_aeroo_purchase',  # dependencia requerida
+        #        'l10n_ar_aeroo_einvoice',  # dependencia requerida
+        #        'l10n_ar_aeroo_stock',  # dependencia requerida
+        #        'po_custom_reports',  # dependencia requerida
+        'account_journal_sequence', #Adds sequence field on account journal and it is going to be considered when choosing journals in differents models.
+
+        # customized modules for jaja instance
+        # ------------------------------------
+
+        'stock_available', # Stock available to promise
+
     ],
     'external_dependencies': {
         'python': [],
@@ -55,6 +77,8 @@ Este módulo fue escrito para desarrollar la customización básica de Cotillon 
 
     # always loaded
     'data': [
+        'views/sale_view.xml',
+        'views/sale_workflow.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

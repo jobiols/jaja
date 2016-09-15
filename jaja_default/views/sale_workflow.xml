@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- Actividades -->
+
+        <record id="act_to_pack_state" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">to_pack</field>
+<!--            <field name="kind">function</field>
+            <field name="action">action_to_pack_function()</field> -->
+        </record>
+
+        <record id="act_packing_state" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">packing</field>
+            <field name="kind">function</field>
+            <field name="action">action_packing_function()</field>
+        </record>
+
+        <record id="act_packed_state" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">packed</field>
+            <field name="kind">function</field>
+            <field name="action">action_packed_function()</field>
+        </record>
+
+        <record id="act_modified_state" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">modified</field>
+            <field name="kind">function</field>
+            <field name="action">action_modified_function()</field>
+        </record>
+
+        <record id="act_dispatched_state" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">dispatched</field>
+            <field name="kind">function</field>
+            <field name="action">action_dispatched_function()</field>
+        </record>
+
+        <record id="act_delivered_state" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">delivered</field>
+            <field name="kind">function</field>
+            <field name="action">action_delivered_function()</field>
+            <field name="flow_stop">True</field>
+        </record>
+
+        <record id="act_in_transit_state" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">in_transit</field>
+            <field name="kind">function</field>
+            <field name="action">action_in_transit_function()</field>
+        </record>
+
+        <record id="act_on_arrival_state" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">on_arrival</field>
+            <field name="kind">function</field>
+            <field name="action">action_on_arrival_function()</field>
+            <field name="flow_stop">True</field>
+        </record>
+
+        <!-- Transiciones -->
+
+        <!-- eliminar estas transiciones -->
+
+        <record id="trans_draft_router" model="workflow.transition">
+<!--
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_router"/>
+            <field name="signal">order_confirm</field>
+-->
+        </record>
+
+        <!-- Nuevas transiciones -->
+
+        <record id="trans_pack_order" model="workflow.transition">
+            <field name="act_from" ref="sale.act_draft"/>
+            <field name="act_to" ref="act_to_pack_state"/>
+            <field name="signal">pack_order</field>
+        </record>
+
+        <record id="trans_do_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_to_pack_state"/>
+            <field name="act_to" ref="sale.act_cancel"/>
+            <field name="signal">do_cancel</field>
+        </record>
+
+        <record id="trans_do_cancel_1" model="workflow.transition">
+            <field name="act_from" ref="act_packed_state"/>
+            <field name="act_to" ref="sale.act_cancel"/>
+            <field name="signal">do_cancel</field>
+        </record>
+
+        <record id="trans_begin_packing" model="workflow.transition">
+            <field name="act_from" ref="act_to_pack_state"/>
+            <field name="act_to" ref="act_packing_state"/>
+            <field name="signal">begin_packing</field>
+        </record>
+
+        <record id="trans_reject_packing" model="workflow.transition">
+            <field name="act_from" ref="act_packing_state"/>
+            <field name="act_to" ref="act_to_pack_state"/>
+            <field name="signal">reject_packing</field>
+        </record>
+
+        <record id="trans_end_packing_1" model="workflow.transition">
+            <field name="act_from" ref="act_packing_state"/>
+            <field name="act_to" ref="act_packed_state"/>
+            <field name="signal">end_packing</field>
+        </record>
+
+        <record id="trans_end_packing_2" model="workflow.transition">
+            <field name="act_from" ref="act_modified_state"/>
+            <field name="act_to" ref="act_packed_state"/>
+            <field name="signal">end_packing</field>
+        </record>
+
+        <record id="trans_modify_pack" model="workflow.transition">
+            <field name="act_from" ref="act_packed_state"/>
+            <field name="act_to" ref="act_modified_state"/>
+            <field name="signal">modify_pack</field>
+        </record>
+
+        <record id="trans_deliver_pack" model="workflow.transition">
+            <field name="act_from" ref="act_packed_state"/>
+            <field name="act_to" ref="act_delivered_state"/>
+            <field name="signal">deliver_pack</field>
+        </record>
+
+        <record id="trans_dispatch_pack" model="workflow.transition">
+            <field name="act_from" ref="act_packed_state"/>
+            <field name="act_to" ref="act_dispatched_state"/>
+            <field name="signal">dispatch_pack</field>
+        </record>
+
+        <record id="trans_go_in_transit" model="workflow.transition">
+            <field name="act_from" ref="act_dispatched_state"/>
+            <field name="act_to" ref="act_in_transit_state"/>
+            <field name="signal">go_in_transit</field>
+        </record>
+
+        <record id="trans_go_on_arrival" model="workflow.transition">
+            <field name="act_from" ref="act_in_transit_state"/>
+            <field name="act_to" ref="act_on_arrival_state"/>
+            <field name="signal">go_on_arrival</field>
+        </record>
+    </data>
+</openerp>
